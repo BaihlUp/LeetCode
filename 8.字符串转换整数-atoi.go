@@ -7,7 +7,6 @@
 // @lc code=start
 func myAtoi(s string) int {
 	index, sign, length := 0, 1, len(s)
-	const MinInt32, MaxInt32 = -1 << 31, 1<<31 - 1
 	res := 0
 	if length <= 0 {
 		return 0
@@ -30,11 +29,11 @@ func myAtoi(s string) int {
 			break
 		}
 		res = res*10 + int(s[index]-'0')
-		if sign*res < MinInt32 {
-			return MinInt32
+		if sign*res < math.MinInt32 {
+			return math.MinInt32
 		}
-		if sign*res > MaxInt32 {
-			return MaxInt32
+		if sign*res > math.MaxInt32 {
+			return math.MaxInt32
 		}
 	}
 	return res * sign
