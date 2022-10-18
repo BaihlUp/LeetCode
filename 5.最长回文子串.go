@@ -15,11 +15,14 @@ func longestPalindrome(s string) string {
 }
 
 func maxPalindrome(s string, left, right int, res string) string {
-	sub := ""
+	sub, flag := "", false
 	for left >= 0 && right < len(s) && s[left] == s[right] {
-		sub = s[left : right+1]
 		left--
 		right++
+		flag = true
+	}
+	if flag {
+		sub = s[left+1 : right]
 	}
 	if len(res) < len(sub) {
 		return sub
