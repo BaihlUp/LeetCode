@@ -23,13 +23,8 @@ func isValidSudoku(board [][]byte) bool {
 
 func isValid(board [][]byte, row, col int, tmp byte) bool {
 	for i := 0; i < len(board); i++ {
-		if board[row][i] != '.' && board[row][i] == tmp {
-			return false
-		}
-		if board[i][col] != '.' && board[i][col] == tmp {
-			return false
-		}
-		if board[3*(row/3)+i/3][3*(col/3)+i%3] != '.' && board[3*(row/3)+i/3][3*(col/3)+i%3] == tmp {
+		if board[row][i] == tmp || board[i][col] == tmp ||
+			board[3*(row/3)+i/3][3*(col/3)+i%3] == tmp {
 			return false
 		}
 	}
