@@ -12,7 +12,7 @@
  *     Next *ListNode
  * }
  */
-func reverseList(head *ListNode) *ListNode {
+func reverseList1(head *ListNode) *ListNode {
 	var pre *ListNode
 	cur := head
 	for cur != nil {
@@ -22,6 +22,16 @@ func reverseList(head *ListNode) *ListNode {
 		cur = tmp
 	}
 	return pre
+}
+
+func reverseList(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	newHead := reverseList(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return newHead
 }
 
 // @lc code=end
