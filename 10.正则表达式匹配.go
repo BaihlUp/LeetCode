@@ -7,7 +7,46 @@
 // @lc code=start
 func isMatch(s string, p string) bool {
 
+    return dp(s, 0, p, 0)
 }
+
+func dp(s string, i int, p string, j int) bool {
+    slen, plen := len(s), len(p)
+    if j == plen {
+        return i == slen 
+    }
+    if i == slen {
+        // s = ""
+        // p = "a*b*"
+        for ; j+1 < plen; j += 2 {
+            if p[j+1] != '*' {
+                return false
+            }
+        }
+        if j != plen {return false}
+        return true
+    }
+
+    res := false
+    if s[i] == p[j] || p[j] == '.' {
+        if j < plen-1 && p[j+1] == '*' {
+            //*匹配0次 或 多次
+            res = dp(s, i+1, p, j) || dp(s, i, p, j+2)
+        } else {
+            res = dp(s, i+1, p, j+1)
+        }
+    } else {
+        if j < plen-1 && p[j+1] == '*' {
+            //*匹配0次
+            res = dp(s, i, p, j+2)
+        } else {
+            res = false
+        }
+    }
+    return res
+}
+
+
 // @lc code=end
 
 class Solution {
