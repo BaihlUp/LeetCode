@@ -36,5 +36,27 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return newHead.Next
 }
 
+// // 打印链表
+// func printList(head *ListNode) {
+// 	for head != nil {
+// 		fmt.Printf("%d -> ", head.Val)
+// 		head = head.Next
+// 	}
+// 	fmt.Println("nil")
+// }
+
+// func main() {
+// 	// 示例：输入 (2 -> 4 -> 3) + (5 -> 6 -> 4)
+// 	l1 := &ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3}}}
+// 	l2 := &ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4}}}
+
+// 	// 调用函数进行相加
+// 	result := addTwoNumbers(l1, l2)
+
+// 	// 打印结果链表
+// 	printList(result)
+// }
+
+
 // @lc code=end
 
