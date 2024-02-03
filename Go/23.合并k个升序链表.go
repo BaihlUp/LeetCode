@@ -53,3 +53,30 @@ func mergeTwoList(l1, l2 *ListNode) *ListNode {
 
 // @lc code=end
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+func main() {
+	// 构建测试用的链表数组
+	var lists []*ListNode
+	for i := 0; i < 4; i++ {
+		list := &ListNode{}
+		curr := list
+		for j := 1; j <= 5; j++ {
+			curr.Val = i*5 + j
+			if j < 5 {
+				curr.Next = &ListNode{}
+				curr = curr.Next
+			}
+		}
+		lists = append(lists, list)
+	}
+
+	// 调用 mergeKLists 函数进行合并
+	mergedList := mergeKLists(lists)
+
+	// 输出合并后的链表结果
+	printList(mergedList)
+}
