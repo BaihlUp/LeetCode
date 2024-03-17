@@ -55,4 +55,4 @@ func (this *MinStack) GetMin() int {
  * param_4 := obj.GetMin();
  */
 // @lc code=end
-
+{s}
