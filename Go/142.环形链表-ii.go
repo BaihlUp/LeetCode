@@ -34,3 +34,13 @@ func detectCycle(head *ListNode) *ListNode {
 
 // @lc code=end
 
+func main() {
+	head := &ListNode{1}
+	tmp := head
+	for i := 2; i < 10; i++ {
+		tmp.Next = &ListNode{i}
+		tmp = tmp.Next
+	}
+	fmt.Println(detectCycle(head))
+	return
+}
