@@ -14,13 +14,14 @@ def generate_code_table(directory):
     for filename in files:
         if filename.endswith(".go") or filename.endswith(".js"):
             filepath = os.path.join(directory, filename)
+            filename = filename.rstrip(".go")
             table += f"| {filename} | [Go]({filepath}) |\n"
     
     return table
 
 if __name__ == "__main__":
     code_directory = "Go/"
-    readme_content = f"# 项目名称\n\n简短的项目描述\n\n## 代码文件\n\n{generate_code_table(code_directory)}"
+    readme_content = f"# 项目名称\n\nLeetCode C++/Go/Python 代码\n\n## 代码文件\n\n{generate_code_table(code_directory)}"
     
     with open("README.md", "w") as f:
         f.write(readme_content)
