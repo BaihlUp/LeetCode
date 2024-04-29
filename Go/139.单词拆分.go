@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-//dp[i] 标识前 i 个字符可以被 wordDict 拼接出
+// dp[i] 标识前 i 个字符可以被 wordDict 拼接出
 func wordBreak(s string, wordDict []string) bool {
 	wordDictSet := make(map[string]bool)
 	for _, word := range wordDict {
@@ -14,7 +14,7 @@ func wordBreak(s string, wordDict []string) bool {
 	dp := make([]bool, len(s)+1)
 	dp[0] = true
 	for i := 1; i <= len(s); i++ {
-		for j := 0; j < len(s); j++ {
+		for j := 0; j < i; j++ {
 			if dp[j] && wordDictSet[s[j:i]] {
 				dp[i] = true
 				break
